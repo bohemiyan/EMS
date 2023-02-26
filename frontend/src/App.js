@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Account from './pages/Account'
 import Navbar from './components/Navbar'
+import Footer from"./components/Footer/Footer";
 
 
 
@@ -15,7 +16,7 @@ function App() {
   const { user } = useAuthContext()
 
   return (
-
+<div>
     <div className='backPage'>
     <div className="App">
       <BrowserRouter>
@@ -43,7 +44,8 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
-      </div>
+      </div></div>
+      <Footer/>
     </div>
   );
 }

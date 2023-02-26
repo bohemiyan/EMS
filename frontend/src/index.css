@@ -7,7 +7,7 @@
   --error: #e7195a;
 }
 body {
-  background-image: url("../public/ff.jpg");
+  /* background-image: url("../public/ff.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
@@ -33,7 +33,7 @@ header a {
   padding: 20px;
   margin: 0 auto;
 }
-/*
+
 .backPage{
   background: hsla(136, 82%, 72%, 1);
 
@@ -46,7 +46,7 @@ header a {
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7EF29D", endColorstr="#0F68A9", GradientType=1 );
   background-image: url("../public/ff.jpg");
   
-}*/
+}
 
 
 /* homepage */
