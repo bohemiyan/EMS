@@ -1,3 +1,46 @@
+# Employee Management App
+This is an employee management application built using the MERN stack (MongoDB, Express.js, React.js, and Node.js). It is designed to help businesses keep track of their employees, their personal information, and their work schedules.
+
+
+## Features
+
+Add new employees to the system with their personal information, contact details, and job information.
+
+Edit and update employee details, including their job title, salary, and work schedule.
+
+View a list of all employees in the system, as well as individual employee profiles.
+
+Search and filter employees by name, job title, department, and other criteria.
+
+Assign employees to different departments and teams.
+
+Generate reports on employee performance, attendance, and other metrics.
+
+Set up automated alerts and notifications for important events, such as employee birthdays and work anniversaries.
+
+
+## Technology Used
+MongoDB: a NoSQL database used to store employee data.
+
+Express.js: a web application framework used to build the server-side components of the application.
+
+React.js: a JavaScript library used to build the user interface of the application.
+
+Node.js: a JavaScript runtime used to run server-side code and interact with the database.
+
+Material UI: a popular React UI framework used to design the application's user interface.
+
+Axios: a JavaScript library used to make HTTP requests to the server.
+## Getting Started
+```cd Backend > npm start;```
+```cd Client > npm start;```
+
+
+
+
+
+
+
 <h1 align="center">Hi 👋, I'm Chirag Mandal</h1>
 <h3 align="center">A passionate frontend developer from India.</h3>
 
