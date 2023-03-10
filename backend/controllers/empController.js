@@ -30,7 +30,7 @@ const getEmp = async (req, res) => {
 
 // create new emp
 const createEmp = async (req, res) => {
-  const {name,phone,email,gender} = req.body
+  const {name,phone,email,address} = req.body
 
   let emptyFields = []
 
@@ -40,11 +40,15 @@ const createEmp = async (req, res) => {
   if(!phone) {
     emptyFields.push('phone')
   }
+  if(phone.length<10){
+    emptyFields.push('phone')
+    return res.status(400).json({ error: 'invalid phone number',emptyFields})
+  }
   if(!email) {
     emptyFields.push('email')
   }
-  if(!gender) {
-    emptyFields.push('gender')
+  if(!address) {
+    emptyFields.push('address')
     
   }
   if(emptyFields.length > 0) {
@@ -54,7 +58,7 @@ const createEmp = async (req, res) => {
   // add doc to db
   try {
     const user_id = req.user._id
-    const emp = await Emp.create({name,phone,email,gender, user_id})
+    const emp = await Emp.create({name,phone,email,address, user_id})
     
     res.status(200).json(emp)
   } catch (error) {
