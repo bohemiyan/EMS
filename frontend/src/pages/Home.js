@@ -1,14 +1,16 @@
-import { useEffect }from 'react'
+import { useEffect,useState }from 'react'
 import { useEmpsContext } from "../hooks/useEmpsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
+import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 // components
-import EmpDetails from '../components/EmpDetails'
 import EmpForm from '../components/EmpForm'
-// import SkillsBar from '../components/SkillsBar'
+import UpdateForm from '../components/UpdateForm'
 
 
 const Home = () => {
+ 
+  const [form, setform] = useState(<EmpForm/>)
   const {emps, dispatch} = useEmpsContext()
   const {user} = useAuthContext()
 
@@ -30,15 +32,63 @@ const Home = () => {
     }
   }, [dispatch, user])
 
+  
+  const handleClickD = async (em) => {
+    if (!user) {
+      return
+    }
+    const empid=em.target.value;
+    const response = await fetch('/api/emps/' + empid, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
+    const json = await response.json()
+
+    if (response.ok) {
+      dispatch({type: 'DELETE_EMP', payload: json})
+    }
+  }
+
+  useEffect(() => {
+    setform(<EmpForm/>)
+  }, [emps])
+  
+
+  const toogleform=(emm)=>{
+    
+    setform(<UpdateForm emp={emm.target.value}/>);
+    
+  }
+
   return (
     <div className="home">
       <div className="emps">
         {emps && emps.map((emp) => (
-          <EmpDetails key={emp._id} emp={emp} />
+          
+          <div className="emp-details" key={emp._id}>
+          <h4>{emp.name}</h4>
+    
+          <div className='emp-image'></div>
+    
+          <div className='empinfo'>
+          <strong>Email: </strong>{emp.email}
+          <p><strong>Phone: </strong>{emp.phone}</p>
+          <p><strong>Gender: </strong>{emp.gender}</p>
+          </div>
+    
+          <div className='keys'>
+          <button className='updatekey' onClick={toogleform} value={emp._id}>Update</button>
+          <button className="deletekey" onClick={handleClickD} value={emp._id}>Delete</button>
+          <p>{formatDistanceToNow(new Date(emp.createdAt), { addSuffix: true })}</p>
+          </div>
+    
+        </div>
         ))}
       </div>
-      <EmpForm />
-      {/* <SkillsBar /> */}
+      {form}
+      
     </div>
   )
 }

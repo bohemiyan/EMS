@@ -87,14 +87,12 @@ const updateEmp = async (req, res) => {
     return res.status(404).json({error: 'No such emp'})
   }
 
-  const emp = await Emp.findOneAndUpdate({_id: id}, {
-    ...req.body
-  })
+  const emp = await Emp.findOneAndUpdate({_id: id}, {...req.body})
 
   if (!emp) {
     return res.status(400).json({error: 'No such emp'})
   }
-
+  
   res.status(200).json(emp)
 }
 

@@ -12,6 +12,11 @@ export const EmpsReducer = (state, action) => {
       return { 
         emps: [action.payload, ...state.emps] 
       }
+      case 'UPDATE_EMP':
+        return {
+          emps: action.payload
+        }
+       
     case 'DELETE_EMP':
      return { 
         emps: state.emps.filter((w) => w._id !== action.payload._id) 

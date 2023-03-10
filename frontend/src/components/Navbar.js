@@ -18,7 +18,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="nav-container">
-          <NavLink exact to="/" className="nav-logo">
+          <NavLink exact="true" to="/" className="nav-logo">
             Employee Managment System 
             
             <i className="fas fa-code"></i>
@@ -28,9 +28,9 @@ const Navbar = () => {
           <> <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
             <NavLink
-              exact
+             exact="true"
               to="/"
-              activeClassName="active"
+              activeclassname="active"
               className="nav-links"
               onClick={handleClick1}
             >
@@ -39,48 +39,16 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <NavLink
-              exact
+              exact="true"
               to="/account"
-              activeClassName="active"
+              activeclassname="active"
               className="nav-links"
               onClick={handleClick1}
             >
               Profile
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-            <NavLink
-              exact
-              to="/blog"
-              activeClassName="active"
-              className="nav-links"
-              onClick={handleClick1}
-            >
-              Blog
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              exact
-              to="/contact"
-              activeClassName="active"
-              className="nav-links"
-              onClick={handleClick1}
-            >
-              Feedback 
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink
-              exact
-              to="/fertilizer"
-              activeClassName="active"
-              className="nav-links"
-              onClick={handleClick1}
-            >
-              Fertilizer
-            </NavLink>
-          </li> */}
+          
         </ul>
         <div className="nav-icon" onClick={handleClick1}>
           <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
