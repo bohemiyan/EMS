@@ -8,21 +8,31 @@ const EmpForm = () => {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [gender, setGender] = useState('')
+  const [address, setaddress] = useState('')
   const [phone, setphone] = useState('')
-
+  const [vv, setvv] = useState(0);
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    if (vv) {
+      setName('')
+      setphone('')
+      setEmail('')
+      setaddress('')
+      setError(null)
+      setEmptyFields([])
+     return
+    }
+
     if (!user) {
       setError('You must be logged in')
       return
     }
 
-    const emp = {name,phone,email,gender}
+    const emp = {name,phone,email,address}
     // console.log(emp) 
     const response = await fetch('/api/emps', {
       method: 'POST',
@@ -34,7 +44,6 @@ const EmpForm = () => {
       }
     })
     const json = await response.json()
-
     if (!response.ok) {
       
       setError(json.error)
@@ -44,7 +53,7 @@ const EmpForm = () => {
       setName('')
       setphone('')
       setEmail('')
-      setGender('')
+      setaddress('')
       setError(null)
       setEmptyFields([])
       
@@ -81,15 +90,18 @@ const EmpForm = () => {
         className={emptyFields.includes('email') ? 'error' : ''}
       />
 
-       <label> Gender:</label>
-      <input 
+       <label> Address:</label>
+      <textarea
+        rows={2}
         type="text"
-        onChange={(e) => setGender(e.target.value)}
-        value={gender}
-        className={emptyFields.includes('gender') ? 'error' : ''}
+        onChange={(e) => setaddress(e.target.value)}
+        value={address}
+        className={emptyFields.includes('address') ? 'error' : ''}
       />
 
-      <button>Add Emp</button>
+
+      <button onClick={()=>{setvv(0)}}>Add Emp</button>
+      <button onClick={()=>{setvv(1)}}>Cancel</button>
       {error && <div className="error">{error}</div>}
     </form>
   )

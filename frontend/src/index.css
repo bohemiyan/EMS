@@ -29,23 +29,11 @@ header a {
   text-decoration: none;
 }
 .pages{
-  max-width: 1400px;
-  padding: 20px;
+
+  padding: 40px;
   margin: 0 auto;
-}
-
-.backPage{
-  background: hsla(136, 82%, 72%, 1);
-
-  background: linear-gradient(90deg, hsla(136, 82%, 72%, 1) 0%, hsla(205, 84%, 36%, 1) 100%);
-  
-  background: -moz-linear-gradient(90deg, hsla(136, 82%, 72%, 1) 0%, hsla(205, 84%, 36%, 1) 100%);
-  
-  background: -webkit-linear-gradient(90deg, hsla(136, 82%, 72%, 1) 0%, hsla(205, 84%, 36%, 1) 100%);
-  
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#7EF29D", endColorstr="#0F68A9", GradientType=1 );
   background-image: url("../public/ff.jpg");
-  
+  background-size:cover;
 }
 
 
@@ -124,7 +112,7 @@ header a {
 
 
 /* new Emp form */
-label, input {
+label, input,textarea {
   display: block;
 }
 input {
@@ -136,7 +124,17 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+textarea {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 form button {
+  margin: 10px;
   background: var(--primary);
   border: 0;
   color: #fff;
@@ -156,6 +154,13 @@ div.error {
 
 input.error {
   border: 1px solid var(--error);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }
 
 /* navbar */

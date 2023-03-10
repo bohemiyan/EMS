@@ -75,7 +75,7 @@ const Home = () => {
           <div className='empinfo'>
           <strong>Email: </strong>{emp.email}
           <p><strong>Phone: </strong>{emp.phone}</p>
-          <p><strong>Gender: </strong>{emp.gender}</p>
+          <p><strong>address: </strong>{emp.address}</p>
           </div>
     
           <div className='keys'>

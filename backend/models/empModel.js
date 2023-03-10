@@ -3,23 +3,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const empSchema = new Schema({
-//   ID: {
-//     type: Number,
-//     required: true,
-//     unique: true
-// },
+
 name: {
     type: String,
     required: true 
 },
-// photo: {
-//   type: Buffer,
-//   contentType: String,
-// },
-// createdAt:{
-// type: Date,
-// default: Date.now()
-// },
 phone: {
     type: Number,
     required: true
@@ -28,7 +16,7 @@ email: {
     type: String,
     required: true
 },
-gender: {
+address: {
     type: String,
     required: true
 },

@@ -4,16 +4,15 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 
 const UpdateForm = (emp) => {
-  const { dispatch } = useEmpsContext()
+  const { dispatch,emps } = useEmpsContext()
   const { user } = useAuthContext()
 
 
- 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [gender, setGender] = useState('')
+  const [address, setaddress] = useState('')
   const [phone, setphone] = useState('')
-
+  const [vv, setvv] = useState(0)
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
 
@@ -32,11 +31,10 @@ useEffect(() => {
         const json = await response.json()
     
         if (response.ok) {
-      
          setName(json.name);
          setEmail(json.email);
          setphone(json.phone);
-         setGender(json.gender);
+         setaddress(json.address);
         }
       }
 fetchemp();  
@@ -46,13 +44,17 @@ fetchemp();
   
 const handleSubmit = async (e) => {
     e.preventDefault()
-
+      if(vv)
+      {
+        dispatch({type: 'UPDATE_EMP', payload: emps})
+      }
+      // console.log(e.target)
     if (!user) {
       setError('You must be logged in')
       return
     }
 
-    const emp = {name,phone,email,gender}
+    const emp = {name,phone,email,address}
     const response = await fetch('/api/emps/'+ empid, {
       method: 'PATCH',
       body: JSON.stringify(emp),
@@ -112,15 +114,17 @@ const handleSubmit = async (e) => {
         className={emptyFields.includes('email') ? 'error' : ''}
       />
 
-       <label> Gender:</label>
-      <input 
+       <label> address:</label>
+      <textarea
+        rows={2} 
         type="text"
-        onChange={(e) => setGender(e.target.value)}
-        value={gender}
-        className={emptyFields.includes('gender') ? 'error' : ''}
+        onChange={(e) => setaddress(e.target.value)}
+        value={address}
+        className={emptyFields.includes('address') ? 'error' : ''}
       />
 
-      <button>Update Emp</button>
+      <button onClick={()=>{setvv(0)}}>Update Emp</button>
+      <button onClick={()=>{setvv(1)}}>Cancel</button>
       {error && <div className="error">{error}</div>}
     </form>
   )
