@@ -77,7 +77,7 @@ updateById = async (req, res) => {
     
     if (req.file) {
       const employeep = await Employee.findById(req.params.id);
-      var path = `./uploads/${employeep.image}`;
+      let path = `./uploads/${employeep.image}`;
       if(fs.existsSync(`./uploads/${path}`))fs.unlinkSync(path);
     }
     const hr = req.Hrid.id;
@@ -113,6 +113,10 @@ deleteById = async (req, res) => {
     if (!employee) {
       return res.status(404).json({ message: 'Employee not found' });
     }
+
+    let path = `./uploads/${employee.image}`;
+    fs.unlinkSync(path);
+
     res.status(200).json({ message: 'Employee deleted successfully' });
   } catch (error) {
     console.error(error);

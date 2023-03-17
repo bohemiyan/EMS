@@ -1,25 +1,16 @@
 import React from 'react';
-import { isLoggedIn, getToken } from '../../../services/HrService';
-import EmployeeService from '../../../services/employeeService';
+import { isLoggedIn} from '../../../services/HrService';
+
 
 import { useNavigate } from 'react-router-dom';
 import './card.css';
 
-const EmployeeCard = ({ employee }) => {
-  
+const EmployeeCard = (props) => {
   const navigate = useNavigate();
-  
-  const  hrAuth  = isLoggedIn();
-  const token=getToken();
+  const  loggedin  = isLoggedIn();
+  const employee=props.employess;
 
-  const handleDelete = async () => {
-    try {
-      await EmployeeService.deleteEmployee(token,employee._id);
-      window.location.reload()
-    } catch (error) {
-      console.error(error);
-    }
-  };
+ 
 
   return (
     <div className='card-container'>
@@ -35,7 +26,7 @@ const EmployeeCard = ({ employee }) => {
        
         </ul>
   
-        {hrAuth && (
+        {loggedin && (
           <div className='card-buttons'>
             <button
               className='card-button update-button'
@@ -43,7 +34,7 @@ const EmployeeCard = ({ employee }) => {
             >
               Update
             </button>
-            <button className='card-button delete-button' onClick={handleDelete}>
+            <button className='card-button delete-button' value={employee._id} onClick={props.Delete}>
               Delete
             </button>
           </div>

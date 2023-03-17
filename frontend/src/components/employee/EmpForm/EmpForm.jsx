@@ -64,7 +64,7 @@ const EmpForm = () => {
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="image">Image</label>
+          <label htmlFor="image">Image: Max 2MB</label>
           <input type="file" id="image" name="image" onChange={(e) => setImage(e.target.files[0])} />
         </div>
         <button type="submit" className='Submit'>Submit</button>

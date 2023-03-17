@@ -111,7 +111,7 @@ const UpdateForm = () => {
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="image">Image:</label>
+          <label htmlFor="image">Image: Max 2MB</label>
           <input
             type="file"
             className="form-control"
