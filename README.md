@@ -32,7 +32,7 @@ Material UI: a popular React UI framework used to design the application's user 
 
 Axios: a JavaScript library used to make HTTP requests to the server.
 ## Getting Started
-```cd Backend > npm start;```
+```cd Backend > npm start;```  ```cd Backend > npm run dev;```
 ```cd Client > npm start;```
 
 
