@@ -1,0 +1,36 @@
+
+.home {
+  margin: 0;
+  padding: 0;
+  }
+  .header{
+    height: 50px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c8cdd090;
+    color: #6c757d;
+    width: 100%;
+  }
+  
+.employee-list {
+  margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    .employee-list {
+      gap: 2rem;
+    }
+  }
+  
+  @media only screen and (min-width: 1024px) {
+    .employee-list {
+      gap: 3rem;
+    }
+  }
+  

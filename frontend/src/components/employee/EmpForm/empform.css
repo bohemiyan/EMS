@@ -1,0 +1,70 @@
+.emp-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.emp-form label {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.emp-form input[type="text"],
+.emp-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.emp-form input[type="file"] {
+  margin-top: 10px;
+}
+
+.Submit {
+  padding: 10px 20px;
+  margin:20px;
+  background-color: #008CBA;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Submit:hover {
+  background-color: rgb(44, 102, 123);
+}
+
+.Cancel{
+  padding: 10px 20px;
+  margin:20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: lightcoral;
+}
+
+.Cancel:hover{
+  background-color: rgb(254, 110, 57);
+}
+
+input[type=file]::file-selector-button {
+  margin: 10px;
+  border: none;
+  background: #527fe0e5;
+  padding: 7px 10px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #527fe0e5;
+}

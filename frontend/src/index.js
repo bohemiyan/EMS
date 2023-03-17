@@ -1,18 +1,18 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import './styleSkill.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
-import { EmpsContextProvider } from './context/EmpsContext'
-import { AuthContextProvider } from './context/AuthContext'
+import reportWebVitals from './reportWebVitals';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <EmpsContextProvider>
-        <App />
-      </EmpsContextProvider>
-    </AuthContextProvider>
+    <Router>
+            <App />
+    </Router>
   </React.StrictMode>
 );
+
+reportWebVitals();

@@ -1,11 +1,14 @@
-footer{
-    bottom: 0px;
-    width: 100%;
-    padding: 10px;
-    background-color: #ececec;
-    text-align: center;
-    font-size: 16px;
-    line-height: 20px;
+.footer {
+    height: 50px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c8cdd090;
     color: #6c757d;
-    position:inherit;
-}
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+  }
+  
