@@ -37,7 +37,7 @@
   /* padding: 20px; */
 }
 
-h2 {
+.card-container h2 {
   font-family: Cambria;
   color: darkolivegreen;
   font-size: 24px;

@@ -7,13 +7,15 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const login=isLoggedIn();
   const Hr=HrName();
-  const navigate = useNavigate();
+  const navigate=useNavigate();
 
+  const currentUrl = window.location.pathname;
+  const page = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
 
-
+  
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   return (
@@ -23,20 +25,18 @@ const Navbar = () => {
         onClick={()=>{navigate('/home')}} alt="logo" 
         />
         </div>
-
-        {/* {login && (
-          
-        )} */}
-      
       {login && (
         <div className="navbar-right">
-          <div className="hr-name">{Hr}</div>
-          <div className="logout-button">
-            <button onClick={handleLogout}>Logout</button>
-          </div>
+          {page==='home' &&(
           <div className="add-employee">
             <button onClick={() => navigate('/addemployee')}>Add Employee</button>
           </div>
+        )}
+         
+          <div className="logout-button">
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+          <div className="hr-name" onClick={()=>navigate('/HrUpdate')}>{Hr}</div>
         </div>
       )}
     </div>

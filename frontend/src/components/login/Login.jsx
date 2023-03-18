@@ -28,8 +28,8 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Log in to your account</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
+      <h2 className='login-heading'>Log In</h2>
         <div className="form-group">
           <label htmlFor="email">Email address</label>
           <input
@@ -55,10 +55,12 @@ const Login = () => {
             required
           />
         </div>
+        <div className="form-group">
         {error && <ErrorMessage message={error} />}
-        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+        <button type="submit" className="login-button" disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Log in'}
         </button>
+        </div>
       </form>
       <p className="mt-3">
         Don't have an account? <Link to="/signup">Sign up</Link>

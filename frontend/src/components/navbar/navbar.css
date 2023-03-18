@@ -18,6 +18,9 @@
   margin-right: 10px;
   cursor: pointer;
 }
+.navbar-left img:hover{
+  opacity: 80%;
+}
 
 .add-employee button {
   margin: 20px;
@@ -43,13 +46,17 @@
   font-family:Gabriola;
   color:darkslategray;
   font-size: xx-large;
-  margin-right: 20px;
+  margin: 20px;
   font-weight: bold;
   text-transform: capitalize;
+  cursor: pointer;
+}
+.hr-name:hover{
+  color: rgb(48, 119, 119);
 }
 
 .logout-button button {
-  background-color: #e10808b9;
+  background-color: #f70909b9;
   color: #fff;
   padding: 8px 12px;
   border: none;
@@ -59,5 +66,5 @@
 }
 
 .logout-button button:hover {
-  background-color: #0772a3;
+  background-color: #ad0505b9;
 }

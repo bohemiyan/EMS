@@ -10,6 +10,7 @@ export const login = async (email, password) => {
       });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("Hr", response.data.name);
+      localStorage.setItem("email", response.data.email);
       return response.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -29,6 +30,27 @@ export const login = async (email, password) => {
       });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("Hr", response.data.name);
+      localStorage.setItem("email", response.data.email);
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        throw new Error(error.response.data.error);
+      } else {
+        throw new Error("Something went wrong");
+      }
+    }
+  };
+
+  export const update = async (token,name,password,newpassword) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const data={name,password,newpassword}
+      const response = await axios.put(`${baseUrl}/Hr/update`,data,config);
+      localStorage.setItem("Hr", response.data.name);
       return response.data;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -42,6 +64,7 @@ export const login = async (email, password) => {
   export const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("Hr");
+    localStorage.removeItem('email')
   };
   
   export const isLoggedIn = () => {
@@ -55,5 +78,8 @@ export const login = async (email, password) => {
   export const HrName=()=>{
     return localStorage.getItem("Hr")
   };
+  export const HrEmail=()=>{
+    return localStorage.getItem('email')
+  }
 
  

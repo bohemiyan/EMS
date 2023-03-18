@@ -4,9 +4,29 @@
     align-items: center;
     margin-top: 30px;
   }
+  .update-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  .update-form h2 {
+    font-family: Cambria;
+    color: darkolivegreen;
+    font-size: 2rem;
+  }
   
   .update-form label {
-    font-size: 18px;
+    margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4e4c4cc0;
     margin-bottom: 8px;
   }
   
@@ -14,7 +34,7 @@
   .update-form select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     font-size: 16px;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -24,7 +44,7 @@
     margin-top: 10px;
   }
   
-  .Submit {
+  .emp-u-Submit {
     padding: 10px 20px;
     margin:20px;
     background-color: #008CBA;
@@ -35,11 +55,11 @@
     cursor: pointer;
   }
 
-  .Submit:hover {
+  .emp-u-Submit:hover {
     background-color: rgb(44, 102, 123);
   }
 
-  .Cancel{
+  .emp-u-Cancel{
     padding: 10px 20px;
     margin:20px;
     color: #fff;
@@ -50,11 +70,11 @@
     background-color: lightcoral;
   }
   
-  .Cancel:hover{
+  .emp-u-Cancel:hover{
     background-color: rgb(254, 110, 57);
   }
   
-  input[type=file]::file-selector-button {
+  .update-form input[type=file]::file-selector-button {
     margin: 10px;
     border: none;
     background: #527fe0e5;
@@ -65,6 +85,6 @@
     transition: background .2s ease-in-out;
   }
   
-  input[type=file]::file-selector-button:hover {
+  .update-form input[type=file]::file-selector-button:hover {
     background: #527fe0e5;
   }

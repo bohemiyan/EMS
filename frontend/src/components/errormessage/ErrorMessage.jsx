@@ -1,9 +1,10 @@
 import React from 'react';
+import'./errormessage.css'
 
 const ErrorMessage = ({ message }) => {
   return (
     <div className="error-message">
-      <p>{message}</p>
+      {message}
     </div>
   );
 };
