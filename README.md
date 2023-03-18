@@ -31,7 +31,10 @@ Node.js: a JavaScript runtime used to run server-side code and interact with the
 Material UI: a popular React UI framework used to design the application's user interface.
 
 Axios: a JavaScript library used to make HTTP requests to the server.
-## Getting Started
+## Getting Started From Root
+Automatic installation and Run the project.
+```npm run init``` to install dependencies then ```npm run project```
+## Getting Started Manually
 ```cd Backend > npm start;```  ```cd Backend > npm run dev;```
 ```cd Client > npm start;```
 
