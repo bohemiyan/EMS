@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { jwtSecret } = require('../utils/config');
+const { jwtSecret } = require('../config');
 
 const requireAuth = async (req, res, next) => {
   // verify user is authenticated

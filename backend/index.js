@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const HrRoutes = require('./routes/HrRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
-const { PORT, MONGODB_URI } = require('./utils/config');
+const { PORT, MONGODB_URI } = require('./config');
 
 const app = express();
 

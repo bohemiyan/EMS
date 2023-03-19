@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Hr = require('../models/hr');
-const { jwtSecret } = require('../utils/config');
+const { jwtSecret } = require('../config');
 
 // Controller function to handle HR registration
 register = async (req, res) => {

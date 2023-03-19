@@ -1,6 +1,7 @@
 import axios from 'axios';
+import {EmpBaseUrl} from '../config'
 
-const baseUrl = 'http://localhost:5500';
+const baseUrl = EmpBaseUrl;
 
 
 const EmployeeService = {

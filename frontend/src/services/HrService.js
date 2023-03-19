@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { HrBaseURL } from '../config';
 
-const baseUrl = 'http://localhost:5500';
+const baseUrl = HrBaseURL;
 
 export const login = async (email, password) => {
     try {
