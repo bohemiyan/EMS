@@ -61,10 +61,10 @@ const Login = () => {
           {isLoading ? 'Loading...' : 'Log in'}
         </button>
         </div>
-      </form>
-      <p className="mt-3">
+        <p className="mt-3">
         Don't have an account? <Link to="/signup">Sign up</Link>
       </p>
+      </form>
     </div>
   );
 };

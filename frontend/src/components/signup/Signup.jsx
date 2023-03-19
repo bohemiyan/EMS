@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { signup } from '../../services/HrService';
 import { Link, useNavigate } from 'react-router-dom';
 import ErrorMessage from '../errormessage/ErrorMessage';
@@ -8,6 +8,8 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [retypePassword, setRetypePassword] = useState('')
+  const [showPassword, setshowPassword] = useState(false)
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +25,22 @@ const Signup = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+  const handleRetypePasswordChange = (event) => {
+    setRetypePassword(event.target.value);
+  };
+
+  const handleShowPasswordClick = () => {
+    setshowPassword(!showPassword);
+  };
+
+ 
+  useEffect(() => {
+    if(password!==retypePassword)
+    setError('Mismatched Password')
+    else 
+    setError(null)
+  }, [retypePassword,password])
+  
 
   const handleSignup = async (e) => {
       e.preventDefault();
@@ -70,7 +88,7 @@ const Signup = () => {
         <div className="form-field">
           <label htmlFor="password">Password:</label>
           <input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
             placeholder="Enter your password"
@@ -78,18 +96,33 @@ const Signup = () => {
             onChange={handlePasswordChange}
             required
           />
+           <button type="button" onClick={handleShowPasswordClick}>
+          {showPassword ? 'Hide' : 'Show'}
+        </button>
+        </div>
+        <div className="form-field">
+          <label htmlFor="password">Retype Password:</label>
+          <input
+            type="password"
+            id="retype-password"
+            placeholder="Retype password"
+            value={retypePassword}
+            onChange={handleRetypePasswordChange}
+            required
+          />
         </div>
         {error && <ErrorMessage message={error} />}
         <div className="form-field">
       
-          <button type="submit" className="signup-button">
+          <button type="submit"
+           className="signup-button"  disabled={error==='Mismatched Password' ? true : false}>
            {isLoading ? 'Loading...' : 'Sign Up'}
           </button>
-        </div>
-      </form>
-      <p className="mt-3">
+          <p className="mt-3">
         Already have an account? <Link to="/login">Login</Link>
       </p>
+        </div>
+      </form>
     </div>
   );
 };

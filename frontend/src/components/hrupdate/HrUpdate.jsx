@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { update,getToken,HrName,HrEmail } from '../../services/HrService';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '../errormessage/ErrorMessage';
@@ -9,6 +9,7 @@ function HrUpdate() {
   const [name, setName] = useState(HrName());
   const [password, setPassword] = useState('');
   const [newpassword, setnewpassword] = useState('')
+  const [retypePassword, setRetypePassword] = useState('')
   const [isLoading, setisLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -25,6 +26,15 @@ function HrUpdate() {
   const handleNewPasswordChange = (e) => {
     setnewpassword(e.target.value);
   };
+  const handleRetypePasswordChange = (event) => {
+    setRetypePassword(event.target.value);
+  };
+  useEffect(() => {
+    if(newpassword!==retypePassword)
+    setError('Mismatched Password')
+    else 
+    setError(null)
+  }, [retypePassword,newpassword])
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -77,9 +87,20 @@ function HrUpdate() {
           
           />
         </div>
+        <div className="form-field">
+          <label htmlFor="password">Retype Password:</label>
+          <input
+            type="password"
+            id="retype-password"
+            placeholder="Retype password"
+            value={retypePassword}
+            onChange={handleRetypePasswordChange}
+            required
+          />
+        </div>
         <div className="buttons">
         {error && <ErrorMessage message={error} />}
-          <button type="submit" className="hr-Submit">
+          <button type="submit" className="hr-Submit" disabled={error==='Mismatched Password' ? true : false}>
             {isLoading?'Loading..': 'Update'}
           </button>
           <button type="cancel" className="hr-Cancel" onClick={(e)=>{navigate('/home')}}>Cancel</button>
