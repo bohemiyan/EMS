@@ -11,10 +11,12 @@ getAll = async (req, res) => {
     
     if(employeesArray.length>0){
     employeesArray.map((employee)=>{
+      if(employee.image){
       const imageName=employee.image;
       const image =fs.readFileSync(`./uploads/${imageName}`);
       const base64Image = Buffer.from(image).toString('base64');
       employee.image = `data:image/png;base64,${base64Image}`;
+      }
       employees.push(employee);
     })
   };
@@ -34,11 +36,12 @@ getById = async (req, res) => {
     if (!employee) {
       return res.status(404).json({ message: 'Employee not found' });
     }
+    if(employee.image){
     const imageName=employee.image;
       const image =fs.readFileSync(`./uploads/${imageName}`);
       const base64Image = Buffer.from(image).toString('base64');
       employee.image = `data:image/png;base64,${base64Image}`;
-
+    }
     res.status(200).json({ employee });
   } catch (error) {
     console.error(error);
@@ -53,8 +56,11 @@ create = async (req, res) => {
   try {
     const hr = req.Hrid.id;
     const {name,phone,email,position}=req.body;
-    const { filename } = req.file;  
-    const image = filename;
+    let image=null;
+    if(req.file){
+    const { filename } = req.file; 
+    image=filename;
+    } 
     
     const existingemp = await Employee.findOne({ email });
     if (existingemp) {

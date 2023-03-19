@@ -10,12 +10,18 @@ const EmployeeCard = (props) => {
   const  loggedin  = isLoggedIn();
   const employee=props.employess;
 
- 
+  let Style=null
+  if(!employee.image)
+  {
+  Style={
+    backgroundImage: 'url("https://source.unsplash.com/random/300x150/?person")'
+  }
+}
 
   return (
     <div className='card-container'>
-      <div className='card-image'>
-        <img className='emp-img' src={employee.image} alt='employee' />
+      <div className='card-image' style={Style}>
+        <img className='emp-img' src={employee.image} alt='employee picture' />
       </div>
       <div className='card-content'>
         <h2>{employee.name}</h2>
