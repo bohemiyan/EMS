@@ -1,3 +1,7 @@
+# uploaded images
+*.jpg 
+*.jpeg
+backend/*.png
 # Logs
 logs
 *.log
