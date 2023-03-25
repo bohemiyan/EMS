@@ -16,19 +16,27 @@ function HrUpdate() {
   const token=getToken();
   const email=HrEmail();
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
+  // const handleNameChange = (e) => {
+  //   setName(e.target.value);
+  // };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-  const handleNewPasswordChange = (e) => {
-    setnewpassword(e.target.value);
-  };
-  const handleRetypePasswordChange = (event) => {
-    setRetypePassword(event.target.value);
-  };
+  // const handlePasswordChange = (e) => {
+  //   setPassword(e.target.value);
+  // };
+  // const handleNewPasswordChange = (e) => {
+  //   setnewpassword(e.target.value);
+  // };
+  // const handleRetypePasswordChange = (e) => {
+  //   setRetypePassword(e.target.value);
+  // };
+
+  const handleChange=(e)=>{
+    if(e.target.name==="name")setName(e.target.value);
+    if(e.target.name==="cpass")setPassword(e.target.value);
+    if(e.target.name==="npass")setnewpassword(e.target.value);
+    if(e.target.name==="rnpass")setRetypePassword(e.target.value);
+  }
+
   useEffect(() => {
     if(newpassword!==retypePassword)
     setError('Mismatched Password')
@@ -61,7 +69,8 @@ function HrUpdate() {
             name="name"
             placeholder="Enter your name"
             value={name}
-            onChange={handleNameChange}
+            // onChange={handleNameChange}
+            onChange={handleChange}
             required
           />
         </div>
@@ -70,9 +79,10 @@ function HrUpdate() {
           <input
             type="Password"
             id="current-password"
+            name="cpass"
             placeholder="Enter your current Password"
             value={password}
-            onChange={handlePasswordChange}
+            onChange={handleChange}
             required
           />
         </div>
@@ -81,9 +91,10 @@ function HrUpdate() {
           <input
             type="password"
             id="new-password"
+            name="npass"
             placeholder="Enter your New password"
             value={newpassword}
-            onChange={handleNewPasswordChange}
+            onChange={handleChange}
           
           />
         </div>
@@ -92,9 +103,10 @@ function HrUpdate() {
           <input
             type="password"
             id="retype-password"
+            name="rnpass"
             placeholder="Retype password"
             value={retypePassword}
-            onChange={handleRetypePasswordChange}
+            onChange={handleChange}
             required
           />
         </div>
