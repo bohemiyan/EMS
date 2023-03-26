@@ -6,6 +6,7 @@ const baseUrl = EmpBaseUrl;
 
 const EmployeeService = {
   getEmployees: async (token) => {
+    try{
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -13,6 +14,14 @@ const EmployeeService = {
     };
     const response = await axios.get(`${baseUrl}/emp/get`, config);
     return response.data;
+  }catch(error){
+    // console.log(error.response.data.error);
+    if (error.response && error.response.data) {
+      throw new Error(error.response.data.error.message);
+    } else {
+      throw new Error("Something went wrong");
+    }
+  }
   },
 
   getEmployeesById: async (token,empid) => {

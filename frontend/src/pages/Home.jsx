@@ -1,19 +1,33 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import EmployeeService from '../services/employeeService';
 import EmployeeCard from '../components/employee/Card/Card';
-import {getToken} from '../services/HrService';
+import {getToken,logout} from '../services/HrService';
 import'./home.css'
 
 const Home = () => {
   const [employees, setEmployees] = useState([]);
   const hrToken=getToken();
+  const navigate=useNavigate();
+  
 
 
   useEffect(() => {
     const fetchData = async () => {
+      try{
       const data = await EmployeeService.getEmployees(hrToken);
       const empdata=data.employees
       setEmployees(empdata);
+      }catch(error)
+      {
+        console.error(error)
+        if(error)
+        {
+          logout();
+          navigate('/login');
+        }
+
+      }
     };
     fetchData();
   }, [hrToken]);
