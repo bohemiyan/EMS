@@ -96,11 +96,11 @@ const Signup = () => {
             onChange={handlePasswordChange}
             required
           />
-           <button type="button" onClick={handleShowPasswordClick}>
+           {/* <button type="button" onClick={handleShowPasswordClick}>
           {showPassword ? 'Hide' : 'Show'}
-        </button>
+        </button> */}
         </div>
-        {/* <div className="form-field">
+        <div className="form-field">
           <label htmlFor="password">Retype Password:</label>
           <input
             type="password"
@@ -110,7 +110,7 @@ const Signup = () => {
             onChange={handleRetypePasswordChange}
             required
           />
-        </div> */}
+        </div>
         {error && <ErrorMessage message={error} />}
         <div className="form-field">
       
