@@ -94,6 +94,9 @@ li {
   cursor: pointer;
   font-weight: bold;
 }
+.update-button:hover{
+  background-color: #1e3b5b;
+}
 
 .delete-button {
   background-color: #dc3545;
@@ -103,5 +106,8 @@ li {
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+}
+.delete-button:hover{
+  background-color: #8f0303;
 }
 

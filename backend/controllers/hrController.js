@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Hr = require('../models/hr');
+const Hr = require('../models/Hr');
 const { jwtSecret } = require('../config');
 
 // Controller function to handle HR registration

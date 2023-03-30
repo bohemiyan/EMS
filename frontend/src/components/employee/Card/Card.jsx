@@ -35,12 +35,12 @@ const EmployeeCard = (props) => {
         {loggedin && (
           <div className='card-buttons'>
             <button
-              className='card-button update-button'
+              className='update-button'
               onClick={() => navigate(`/updateemployee/${employee._id}`)}
             >
               Update
             </button>
-            <button className='card-button delete-button' value={employee._id} onClick={props.Delete}>
+            <button className='delete-button' value={employee._id} onClick={props.Delete}>
               Delete
             </button>
           </div>
