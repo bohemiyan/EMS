@@ -15,7 +15,7 @@ const upload = multer({
         },
       }),
       fileFilter(req, file, cb) {
-        if(!file.originalname.match(/\.(jpeg|jpg|png)$/)){
+        if(!file.originalname.match(/\.(jpeg|jpg|png|JPG)$/)){
             cb(new Error('only update files with jpeg or jpeg or png format .'));
         }
         cb(undefined, true) // Continue with upload

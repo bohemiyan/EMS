@@ -9,6 +9,8 @@ import HrUpdate from './components/hrupdate/HrUpdate';
 import EmpForm from './components/employee/EmpForm/EmpForm';
 import { isLoggedIn} from './services/HrService';
 import UpdateForm from './components/employee/UpdateForm/UpdateForm';
+import ForgetPass from './components/login/ResetPasswordForm';
+
 import './app.css'
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={login ? <Navigate to="/home" replace /> : <Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path='/forgetpass' element={<ForgetPass/>}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/hrupdate" element={<HrUpdate />} />
         <Route path="/home" element={<Home />} />

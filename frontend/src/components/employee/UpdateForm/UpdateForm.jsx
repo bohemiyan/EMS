@@ -11,6 +11,7 @@ const UpdateForm = () => {
   const [email, setEmail] = useState('');
   const [position, setPosition] = useState('');
   const [image, setImage] = useState(null);
+  const [imageName, setimageName] = useState()
   const [error, setError] = useState('');
   const [isLoading, setisLoading] = useState(false)
 
@@ -29,11 +30,16 @@ const UpdateForm = () => {
       setPhone(emp.phone);
       setPosition(emp.position);
       setImage(emp.image);
+      setimageName(emp.image)
     };
     fetchData();
   }, [empId,HrToken]);
 
 
+const imageChange=(e)=>{
+            setImage(e.target.files[0]);
+            setimageName(e.target.files[0].name)
+}
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -87,7 +93,11 @@ const UpdateForm = () => {
         </div>
         <div className="emp-update-form-group">
           <label htmlFor="image">Image: Max 2MB</label>
-          <input type="file" id="image" name="image" onChange={(e) => setImage(e.target.files[0])} />
+          <input type="file" id="image" name="image" 
+          onChange={imageChange} />
+          {!imageName && <ul>No image</ul>}
+          {imageName && <ul>{imageName}</ul>}
+        
         </div>
         <div className="buttons">
         {error && <ErrorMessage message={error} />}

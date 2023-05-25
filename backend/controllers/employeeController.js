@@ -13,9 +13,18 @@ getAll = async (req, res) => {
     employeesArray.map((employee)=>{
       if(employee.image){
       const imageName=employee.image;
-      const image =fs.readFileSync(`./uploads/${imageName}`);
+      try{
+        const image =fs.readFileSync(`./uploads/${imageName}`);
       const base64Image = Buffer.from(image).toString('base64');
       employee.image = `data:image/png;base64,${base64Image}`;
+      }
+      catch(error){
+        if(error.errno ===-2)
+        employee.image='';
+        console.log(' employee image not found');
+        
+      }
+      
       }
       employees.push(employee);
     })
@@ -25,7 +34,7 @@ getAll = async (req, res) => {
     
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error -01' });
   }
 };
 
@@ -36,16 +45,12 @@ getById = async (req, res) => {
     if (!employee) {
       return res.status(404).json({ message: 'Employee not found' });
     }
-    if(employee.image){
-    const imageName=employee.image;
-      const image =fs.readFileSync(`./uploads/${imageName}`);
-      const base64Image = Buffer.from(image).toString('base64');
-      employee.image = `data:image/png;base64,${base64Image}`;
-    }
+    
+
     res.status(200).json({ employee });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error -02' });
   }
 };
 
@@ -72,7 +77,7 @@ create = async (req, res) => {
     res.status(201).json({ message: 'Employee created successfully', employee });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: 'Internal server error-03' });
   }
 };
 
@@ -80,36 +85,42 @@ create = async (req, res) => {
 // Update an employee by ID
 updateById = async (req, res) => {
   try {
-    
-    if (req.file) {
-      const employeep = await Employee.findById(req.params.id);
-      let path = `./uploads/${employeep.image}`;
-      if(fs.existsSync(`./uploads/${path}`))fs.unlinkSync(path);
-    }
     const hr = req.Hrid.id;
-    const {name,phone,email,position}=req.body;
-    const { filename } = req.file;
-    const image =filename;
-
-    const employeeupdate={
-      name:name,
-      phone:phone,
-      email:email,
-      position:position,
-      image:image,
-      hr:hr
+    const { name, phone, email, position, image } = req.body;
+    let employeeUpdate = {
+      name,
+      phone,
+      email,
+      position,
+      image,
+      hr
     };
 
-    const employee = await Employee.findByIdAndUpdate(req.params.id, employeeupdate, { new: true });
+    if (req.file) {
+      const { filename } = req.file;
+      employeeUpdate.image = filename;
+
+      const employee = await Employee.findById(req.params.id);
+      if (employee.image) {
+        const path = `./uploads/${employee.image}`;
+        if (fs.existsSync(path)) {
+          fs.unlinkSync(path);
+        }
+      }
+    }
+
+    const employee = await Employee.findByIdAndUpdate(req.params.id, employeeUpdate, { new: true });
     if (!employee) {
       return res.status(404).json({ error: 'Employee not found' });
     }
+
     res.status(200).json({ message: 'Employee updated successfully', employee });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 
 // Delete an employee by ID
@@ -126,7 +137,7 @@ deleteById = async (req, res) => {
     res.status(200).json({ message: 'Employee deleted successfully' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error-04' });
   }
 };
 module.exports={getAll,getById,create,updateById,deleteById}
