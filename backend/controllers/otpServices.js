@@ -13,13 +13,13 @@ sendOtp = async (req, res) => {
       }
       return otp;
     };
-    // You can use external libraries or services for email sending, or implement your own logic
-    // Example using a fictional email service:
-    const otp = generateOtp(); // Implement your logic to generate an OTP
+    const otp = generateOtp(); 
     console.log(otp);
+
+    //sending mail
     // await sendEmail(email, 'OTP Verification',otp);
-    // You can also store the generated OTP in your database or cache for verification purposes
-    // Example using a fictional OTP storage:
+
+    //storing otp into db.
     await saveOtp(email, otp);
     res.status(200).json({ message: 'OTP sent successfully' });
   } catch (error) {
@@ -31,17 +31,11 @@ sendOtp = async (req, res) => {
 verifyOtp = async (req, res) => {
   try {
     const { email, otp } = req.body;
-    // Implement your logic to verify the OTP
-    // Retrieve the stored OTP from your database or cache
-    // Example using a fictional OTP storage:
     const storedOtp = await getOtp(email);
     if (!storedOtp) {
       return res.status(400).json({ error: 'OTP verification failed' });
     }
     if (otp === storedOtp) {
-      // OTP verification successful
-      // You can clear the stored OTP from your database or cache here
-      // Example using a fictional OTP storage:
       await clearOtp(email);
       res.status(200).json({ message: 'OTP verified successfully' });
     } else {
@@ -56,8 +50,6 @@ verifyOtp = async (req, res) => {
 resetPassword = async (req, res) => {
   try {
     const { email, newPassword } = req.body;
-    // Implement your logic to reset the HR's password
-    // Retrieve the HR from your database using the provided email
     const hr = await Hr.findOne({ email });
     if (!hr) {
       return res.status(404).json({ error: 'HR not found' });
