@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const requireAuth = require('../middleware/requireAuth');
-const { register, update, login, sendOtp, verifyOtp, resetPassword } = require('../controllers/hrController');
+const { register, update, login} = require('../controllers/hrController');
+const {sendOtp,verifyOtp,resetPassword}= require ('../controllers/otpServices')
 
 router.post('/signup', register);
 router.put('/update',requireAuth,update);
