@@ -30,7 +30,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, [hrToken]);
+  }, [hrToken,navigate]);
 
   const handleDelete = async (emp) => {
     try {
