@@ -119,9 +119,15 @@ navigate('/login');
             <button type="submit" className="login-button" disabled={isLoading}>
               {isLoading ? 'Loading...' : 'Verify OTP'}
             </button>
+            <button className="resend-otp-button" onClick={sendOtp}>
+              Resend OTP
+              </button>
+
           </div>
         </form>
       )}
+
+    
 
       {isOtpVerified && (
         <form className="login-form" onSubmit={handlePasswordReset}>
