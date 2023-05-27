@@ -100,7 +100,7 @@ navigate('/login');
       )}
 
       {isOtpSent && !isOtpVerified && (
-        <form className="login-form" onSubmit={handleOtpVerify}>
+        <form className="login-form" >
           <h2 className="login-heading">Verify OTP</h2>
           <div className="form-group">
             <label htmlFor="otp">Enter OTP</label>
@@ -111,15 +111,19 @@ navigate('/login');
               placeholder="Enter OTP"
               value={otp}
               onChange={(e) => setOtp(e.target.value)}
-              required
+            
             />
           </div>
           {error && <ErrorMessage message={error} />}
           <div className="form-group">
-            <button type="submit" className="login-button" disabled={isLoading}>
+            <button type="submit" 
+            className="login-button" 
+            disabled={isLoading}
+            onClick={handleOtpVerify}
+            >
               {isLoading ? 'Loading...' : 'Verify OTP'}
             </button>
-            <button className="resend-otp-button" onClick={sendOtp}>
+            <button className="resend-otp-button" onClick={handleEmailSubmit }>
               Resend OTP
               </button>
 

@@ -30,6 +30,7 @@ export const login = async (email, password) => {
       });
       return response.data;
     } catch (error) {
+      // console.log(error.response)
       if (error.response && error.response.data) {
         throw new Error(error.response.data.error);
       } else {

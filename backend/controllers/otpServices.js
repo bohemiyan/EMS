@@ -1,9 +1,17 @@
 const {saveOtp,getOtp,clearOtp}=require('../models/OtpStorage');
 const {sendEmail}=require('./emailService')
+const Hr = require('../models/Hr');
+
 
 sendOtp = async (req, res) => {
   try {
     const { email } = req.body;
+    const user=await Hr.findOne({ email });
+    if(!user){
+    res.status(400).json({ error: 'User not found' });
+  return;
+    }
+    let tt=1;
     // Implement your logic to generate and send OTP to the provided email
     const generateOtp = () => {
       const otpLength = 6;
@@ -13,18 +21,25 @@ sendOtp = async (req, res) => {
       }
       return otp;
     };
+    
     const otp = generateOtp(); 
     console.log(otp);
-
+    await saveOtp(email, otp);
+console.log('mail sent')
     //sending mail
     // await sendEmail(email, 'OTP Verification',otp);
 
     //storing otp into db.
-    await saveOtp(email, otp);
+   
     res.status(200).json({ message: 'OTP sent successfully' });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to send OTP' });
+    // console.log(error.message)
+    if(error.message==442)
+    {
+      res.status(500).json({ error: 'You exceed limits, please try after sometime'});
+    }
+ else
+    res.status(500).json({ error: error.message});
   }
 };
 
