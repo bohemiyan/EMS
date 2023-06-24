@@ -14,7 +14,7 @@ const EmployeeCard = (props) => {
   if(!employee.image)
   {
   Style={
-    backgroundImage: 'url("https://source.unsplash.com/random/300x150/?person")'
+    backgroundImage: 'url("https://source.unsplash.com/random/300x150/?marvel")'
   }
 }
 

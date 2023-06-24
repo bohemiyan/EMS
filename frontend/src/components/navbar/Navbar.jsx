@@ -22,7 +22,7 @@ const Navbar = () => {
     <div className="navbar-container">
       <div className="navbar-left">
         <img src={logo} 
-        onClick={()=>{navigate('/home')}} alt="logo" 
+        onClick={()=>{navigate('/')}} alt="logo" 
         />
         </div>
       {login && (

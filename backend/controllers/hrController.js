@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const Hr = require('../models/Hr');
 const { jwtSecret } = require('../config');
 
+
 // Controller function to handle HR registration
 register = async (req, res) => {
   try {
@@ -89,4 +90,8 @@ login = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   } 
 };
+
+
+
+
 module.exports = {register,update,login};

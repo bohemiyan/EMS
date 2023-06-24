@@ -21,6 +21,59 @@ export const login = async (email, password) => {
       }
     }
   };
+
+  //#############################################################################
+  export const sendOtp = async (email) => {
+    try {
+      const response = await axios.post(`${baseUrl}/Hr/send-otp`, {
+        email,
+      });
+      return response.data;
+    } catch (error) {
+      // console.log(error.response)
+      if (error.response && error.response.data) {
+        throw new Error(error.response.data.error);
+      } else {
+        throw new Error('Something went wrong');
+      }
+    }
+  };
+  
+  export const verifyOtp = async (email, otp) => {
+    try {
+      const response = await axios.post(`${baseUrl}/Hr/verify-otp`, {
+        email,
+        otp,
+      });
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        throw new Error(error.response.data.error);
+      } else {
+        throw new Error('Something went wrong');
+      }
+    }
+  };
+  
+  export const resetPassword = async (email, newPassword) => {
+    try {
+      const response = await axios.post(`${baseUrl}/Hr/reset-password`, {
+        email,
+        newPassword,
+      });
+      return response.data;
+    } catch (error) {
+      if (error.response && error.response.data) {
+        throw new Error(error.response.data.error);
+      } else {
+        throw new Error('Something went wrong');
+      }
+    }
+  };
+  
+  
+  //#######################################################################333333###
+ 
   
   export const signup = async (name, email, password) => {
     try {
@@ -42,7 +95,7 @@ export const login = async (email, password) => {
     }
   };
 
-  export const update = async (token,name,password,newpassword) => {
+  export const Hrupdate = async (token,name,password,newpassword) => {
     try {
       const config = {
         headers: {

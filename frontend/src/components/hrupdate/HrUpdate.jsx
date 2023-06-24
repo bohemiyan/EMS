@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { update,getToken,HrName,HrEmail } from '../../services/HrService';
+import { Hrupdate,getToken,HrName,HrEmail } from '../../services/HrService';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '../errormessage/ErrorMessage';
 import './hrupdate.css';
@@ -48,7 +48,7 @@ function HrUpdate() {
     e.preventDefault();
     setisLoading(true);
     try {
-      await update(token,name,password,newpassword);
+      await Hrupdate(token,name,password,newpassword);
       setisLoading(false);
       navigate('/home');
     } catch (error) {
@@ -107,7 +107,7 @@ function HrUpdate() {
             placeholder="Retype password"
             value={retypePassword}
             onChange={handleChange}
-            required
+           
           />
         </div>
         <div className="buttons">

@@ -30,17 +30,23 @@ const Home = () => {
       }
     };
     fetchData();
-  }, [hrToken]);
+  }, [hrToken,navigate]);
 
-  const handleDelete =async(emp)=> {
+  const handleDelete = async (emp) => {
     try {
-      const empId=emp.target.value
-       EmployeeService.deleteEmployee(hrToken,empId);
-      setEmployees(employees.filter(obj => obj._id !==empId))
+      const empId = emp.target.value;
+      const confirmDelete = window.confirm('Are you sure you want to delete this employee?');
+  
+      if (confirmDelete) {
+        await EmployeeService.deleteEmployee(hrToken, empId);
+        setEmployees(employees.filter((obj) => obj._id !== empId));
+        alert('Employee deleted successfully.');
+      }
     } catch (error) {
       console.error(error);
     }
   };
+  
 
   return (
     <div className="home">

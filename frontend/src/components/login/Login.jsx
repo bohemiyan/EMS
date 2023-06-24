@@ -64,6 +64,12 @@ const Login = () => {
         <p className="mt-3">
         Don't have an account? <Link to="/signup">Sign up</Link>
       </p>
+      <p className="mt-3">
+  <Link to="/forgetpass" style={{ color: "red" }}>
+    Forgot Password!
+  </Link>
+</p>
+
       </form>
     </div>
   );
