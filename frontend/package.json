@@ -17,12 +17,15 @@
   "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "pm2": "pm2 serve -s build --name EMS-CLIENT"
+    "start": "PORT=3001 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "serve": "serve -l 3001 -s build",
+    "pm2-start": "pm2 start npm --name EMS-CLIENT -- start",
+    "pm2-serve": "pm2 start npm --name EMS-CLIENT -- serve"
   },
+  
   "eslintConfig": {
   "extends": [
   "react-app",
