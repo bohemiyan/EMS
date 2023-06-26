@@ -6,6 +6,7 @@
   "scripts": {
     "init": "concurrently \"cd backend && npm i\" \"cd frontend && npm i\"",
     "project": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\"",
+    "build":"cd frontend && npm rub build",
     "pm2": "concurrently \"cd backend && npm run pm2\" \"cd frontend && npm rum pm2\"",
     "pm2-stop": "concurrently \"pm2 stop EMSSERVER\" \"pm2 stop EMS-CLIENT\"",
     "pm2-delete": "concurrently \"pm2 delete EMSSERVER\" \"pm2 delete EMS-CLIENT\""
