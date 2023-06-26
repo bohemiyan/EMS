@@ -21,7 +21,7 @@
   "build": "react-scripts build",
   "test": "react-scripts test",
   "eject": "react-scripts eject",
-  "pm2": "pm2 serve build 443 --name EMS-CLIENT"
+  "pm2": "pm2 serve build 3002 --name EMS-CLIENT"
   },
   "eslintConfig": {
   "extends": [
